@@ -17,17 +17,22 @@ Route::get('/', function () {
 });
 
 Route::get('/usuarios', function () {
-    //return view('welcome');
     return '<h1>Usuarios</h1>';
 });
 
 Route::get('/usuarios/nuevo', function () {
-    //return view('welcome');
     return '<h1>Crear Nuevo Usuario</h1>';
 });
 
 Route::get('/usuarios/{id}', function ($id) {
-    //return view('welcome');
     return '<h1>Mostarndo Detalle del Usuario: '.$id.'</h1>';
 });
 
+Route::get('/saludo/{name}/{nickname?}', function ($name,$nickname=null) {
+	if($nickname){
+		return '<h1>Bienvenido '.$name.', tu apodo es: '.$nickname.' </h1>';
+	}else{
+		return '<h1>Bienvenido '.$name.', no tienes apodo </h1>';
+	}
+    
+});
