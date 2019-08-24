@@ -16,9 +16,7 @@ Route::get('/', function () {
     return 'Home';
 });
 
-Route::get('/usuarios', function () {
-    return '<h1>Usuarios</h1>';
-});
+Route::get('/usuarios', 'UserController@index');
 
 Route::get('/usuarios/nuevo', function () {
     return '<h1>Crear Nuevo Usuario</h1>';
