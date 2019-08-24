@@ -21,7 +21,13 @@ Route::get('/usuarios', function () {
     return '<h1>Usuarios</h1>';
 });
 
-Route::get('/usuarios/detalles', function () {
+Route::get('/usuarios/nuevo', function () {
     //return view('welcome');
-    return '<h1>Mostarndo Detalle del Usuario: '.$_GET['id'].'</h1>';
+    return '<h1>Crear Nuevo Usuario</h1>';
 });
+
+Route::get('/usuarios/{id}', function ($id) {
+    //return view('welcome');
+    return '<h1>Mostarndo Detalle del Usuario: '.$id.'</h1>';
+});
+
