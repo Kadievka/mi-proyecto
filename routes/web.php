@@ -15,3 +15,13 @@ Route::get('/', function () {
     //return view('welcome');
     return 'Home';
 });
+
+Route::get('/usuarios', function () {
+    //return view('welcome');
+    return '<h1>Usuarios</h1>';
+});
+
+Route::get('/usuarios/detalles', function () {
+    //return view('welcome');
+    return '<h1>Mostarndo Detalle del Usuario: '.$_GET['id'].'</h1>';
+});
