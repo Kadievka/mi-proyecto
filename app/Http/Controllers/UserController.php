@@ -22,7 +22,10 @@ class UserController extends Controller
 
 		$title='Listado de Usuarios';
 
-		return view ('users',['users'=>$users, 'title'=>$title]);
+		return view ('users')->with([
+			'users'=>$users,
+			'title'=>$title,
+		]);
 	}
 
 }
