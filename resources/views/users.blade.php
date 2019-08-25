@@ -66,10 +66,15 @@
     </head>
     <body>
         <h1>{{$title}}</h1>
-        <ul>
-            @foreach ($users as $user)
-                <li>{{($user)}}</li>
-            @endforeach
-        </ul>
+        <hr>
+        @if (empty($users))
+            <p>No hay usuarios registrados {{time()}}</p>
+        @else
+            <ul>
+                @foreach ($users as $user)
+                    <li>{{($user)}}</li>
+                @endforeach
+            </ul>
+        @endif
     </body>
 </html>

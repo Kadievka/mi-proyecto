@@ -9,7 +9,10 @@ class UserController extends Controller
     //
 	public function index(){
 
-		$users=[
+		if (request()->has('empty')){
+			$users=[];
+		}else{
+			$users=[
 			'Do',
 			'Re',
 			'Mi',
@@ -18,7 +21,8 @@ class UserController extends Controller
 			'La',
 			'Si',
 			'<script>$kad="123321"</script>',
-		];
+			];
+		}
 
 		$title='Listado de Usuarios';
 

@@ -20,10 +20,11 @@ class UsersModuleTest extends TestCase
         ->assertSee('Usuarios');
     }
 
-    function it_loads_all_the_users()
+    function it_shows_the_users_list()
     {
         $this->get('/usuarios')
         ->assertStatus(200)
+        ->assertSee('Listado de Usuarios')
         ->assertSee('Do')
         ->assertSee('Re')
         ->assertSee('Mi')
@@ -31,8 +32,15 @@ class UsersModuleTest extends TestCase
         ->assertSee('Sol')
         ->assertSee('La')
         ->assertSee('Si')
-        ->assertSee('<script>$kad="123321"</script>')
-        ->assertSee('Listado de Usuarios');
+        ->assertSee('<script>$kad="123321"</script>');
+
+    }
+
+    function it_shows_no_users_registered()
+    {
+        $this->get('/usuarios?empty')
+        ->assertSee('Listado de Usuarios')
+        ->assertSee('No hay usuarios registrados');
 
     }
 }
