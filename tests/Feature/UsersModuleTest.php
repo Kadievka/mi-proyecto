@@ -41,6 +41,5 @@ class UsersModuleTest extends TestCase
         $this->get('/usuarios?empty')
         ->assertSee('Listado de Usuarios')
         ->assertSee('No hay usuarios registrados');
-
     }
 }

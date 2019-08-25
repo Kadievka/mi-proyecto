@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Listado de Ususarios</title>
+        <title>Nuevo Ususario</title>
 
         <!-- Fonts -->
         <!--<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">-->
@@ -63,18 +63,22 @@
             }
         </style>
         -->
+
+        <!-- Válidators -->
+
     </head>
     <body>
         <h1>{{$title}}</h1>
         <hr>
-        @if (empty($users))
-            <p>No hay usuarios registrados </p>
-        @else
-            <ul>
-                @foreach ($users as $user)
-                    <li>{{($user)}}</li>
-                @endforeach
-            </ul>
-        @endif
+        <form>
+            <p>
+                Nombre: <input type="text" name="name" value="" /> 
+                Apodo: <input type="text" name="nickname" value="" />
+            </p>
+            <input type="submit" value="Aceptar" />
+        </form>
+        
+        <!-- NOTA: quiero realizar una verificación de datos en que si no hay nombre se muestre un mensaje de alerta cuando se pulsa el botón de aceptar -->
+
     </body>
 </html>

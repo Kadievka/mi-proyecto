@@ -18,9 +18,7 @@ Route::get('/', function () {
 
 Route::get('/usuarios', 'UserController@index');
 
-Route::get('/usuarios/nuevo', function () {
-    return '<h1>Crear Nuevo Usuario</h1>';
-});
+Route::get('/usuarios/nuevo', 'NewUserController@index');
 
 Route::get('/usuarios/{id}', function ($id) {
     return '<h1>Mostarndo Detalle del Usuario: '.$id.'</h1>';
@@ -32,5 +30,8 @@ Route::get('/saludo/{name}/{nickname?}', function ($name,$nickname=null) {
 	}else{
 		return '<h1>Bienvenido '.$name.', no tienes apodo </h1>';
 	}
-    
 });
+
+
+
+    
