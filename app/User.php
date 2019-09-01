@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Profession;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,9 @@ class User extends Authenticatable
 
     public static function findByEmail($email){
         return static::where(compact('email'))->first();
+    }
+
+    public function profession(){
+        return $this->belongsTo(Profession::class,'profession_id');
     }
 }
