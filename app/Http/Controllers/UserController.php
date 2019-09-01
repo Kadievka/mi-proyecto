@@ -39,4 +39,10 @@ class UserController extends Controller
 		->with('title',$title);
 	}
 
+	public function show($id){
+		$user=User::find($id);
+		//dd($user);
+		return view('usersShow',compact('user'));
+	}
+
 }

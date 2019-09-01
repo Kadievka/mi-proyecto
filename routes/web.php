@@ -20,9 +20,11 @@ Route::get('/usuarios', 'UserController@index');
 
 Route::get('/usuarios/nuevo', 'NewUserController@index');
 
-Route::get('/usuarios/{id}', function ($id) {
+/*Route::get('/usuarios/{id}', function ($id) {
     return '<h1>Mostarndo Detalle del Usuario: '.$id.'</h1>';
-});
+});*/
+
+Route::get('/usuarios/{id}', 'UserController@show');
 
 Route::get('/saludo/{name}/{nickname?}', function ($name,$nickname=null) {
 	if($nickname){
