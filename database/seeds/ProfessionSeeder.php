@@ -41,5 +41,7 @@ class ProfessionSeeder extends Seeder
         $professionId=Profession::where('title','Desarrollador back-end')->value('id');
         //dd('professionId: '.$professionId);
 
+        factory(Profession::class,18)->create();
+
     }
 }

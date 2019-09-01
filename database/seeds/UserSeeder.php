@@ -44,5 +44,11 @@ class UserSeeder extends Seeder
         	'password'=>bcrypt('1111'),
 		]);
 
+		factory(User::class)->create([
+			'profession_id'=>2,
+		]);
+
+		factory(User::class,47)->create();
+
     }
 }
