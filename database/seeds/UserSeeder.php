@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UserSeeder extends Seeder
 {
@@ -12,7 +13,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         //DB::table('users')->truncate();
-        DB::table('users')->insert([
+
+        //CONSTRUCTOR DE CONSULTAS DE SQL
+        
+        /*DB::table('users')->insert([
         	'name'=>'Kadievka Salcedo',
         	'email'=>'kadievka@gmail.com',
         	'password'=>bcrypt('1111'),
@@ -22,6 +26,22 @@ class UserSeeder extends Seeder
         	'Otro Usuario',
         	'otrousuario@gmail.com',
         	bcrypt('1111'),
-        ]);
+        ]);*/
+
+        //MODEL DE ELOQUENT
+
+        User::create ([
+        	'name'=>'Kadievka Salcedo',
+        	'email'=>'kadievka@gmail.com',
+        	'password'=>bcrypt('1111'),
+        	'profession_id'=>1
+		]);
+
+		User::create ([
+        	'name'=>'Otro Usuario',
+        	'email'=>'otrousuario@gmail.com',
+        	'password'=>bcrypt('1111'),
+		]);
+
     }
 }
