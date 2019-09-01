@@ -18,5 +18,10 @@ class UserSeeder extends Seeder
         	'password'=>bcrypt('1111'),
         	'profession_id'=>1
         ]);
+        DB::insert('INSERT INTO users (name, email, password) VALUES (?,?,?)', [
+        	'Otro Usuario',
+        	'otrousuario@gmail.com',
+        	bcrypt('1111'),
+        ]);
     }
 }

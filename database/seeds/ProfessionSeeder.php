@@ -20,5 +20,8 @@ class ProfessionSeeder extends Seeder
         DB::table('professions')->insert([
         	'title'=>'Desarrollador front-end'
         ]);
+
+        $professions=DB::select('SELECT id FROM professions WHERE title=?',['Desarrollador back-end']);
+        //dd($professions);
     }
 }
