@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -12,7 +13,8 @@ class UserController extends Controller
 		if (request()->has('empty')){
 			$users=[];
 		}else{
-			$users=[
+			
+			/*$users=[
 			'Do',
 			'Re',
 			'Mi',
@@ -21,7 +23,13 @@ class UserController extends Controller
 			'La',
 			'Si',
 			'<script>$kad="123321"</script>',
-			];
+			];*/
+
+			//$users=DB::table('users')->get();
+			//dd($users);
+
+			$users=User::all();
+
 		}
 
 		$title='Listado de Usuarios';

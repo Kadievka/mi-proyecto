@@ -67,14 +67,12 @@
     <body>
         <h1>{{$title}}</h1>
         <hr>
-        @if (empty($users))
-            <p>No hay usuarios registrados </p>
-        @else
-            <ul>
-                @foreach ($users as $user)
-                    <li>{{($user)}}</li>
-                @endforeach
-            </ul>
-        @endif
+
+        @forelse ($users as $user)
+            <li>{{$user->name}} ({{$user->email}})</li>
+        @empty
+            <li>No hay usuarios registrados </li>
+        @endforelse
+
     </body>
 </html>
