@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-    return 'Home';
+    return view('welcome');
+    //return 'Home';
 });
 
 Route::get('/usuarios', 'UserController@index');
