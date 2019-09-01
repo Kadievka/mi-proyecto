@@ -34,6 +34,7 @@ class UserSeeder extends Seeder
         	'name'=>'Kadievka Salcedo',
         	'email'=>'kadievka@gmail.com',
         	'password'=>bcrypt('1111'),
+        	'is_admin'=>true,
         	'profession_id'=>1
 		]);
 
