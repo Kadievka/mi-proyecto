@@ -39,7 +39,7 @@ class ProfessionSeeder extends Seeder
         ]);
 
         $professionId=Profession::where('title','Desarrollador back-end')->value('id');
-        dd('professionId: '.$professionId);
+        //dd('professionId: '.$professionId);
 
     }
 }
