@@ -25,6 +25,8 @@
 
             </p>
         </form>
+
+        <p><a href="{{url('/usuarios/')}}">Regresar</a></p>
         
         <!-- NOTA: quiero realizar una verificación de datos en que si no hay nombre se muestre un mensaje de alerta cuando se pulsa el botón de aceptar -->
 

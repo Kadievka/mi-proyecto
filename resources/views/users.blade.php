@@ -12,7 +12,8 @@
         <hr>
 
         @forelse ($users as $user)
-            <li>{{$user->id}}. {{$user->name}} ({{$user->email}})</li>
+            <li>{{$user->id}}. {{$user->name}} ({{$user->email}})
+            <a href="{{url('/usuarios/'.$user->id)}}">Ver Detalles</a></li>
         @empty
             <li>No hay usuarios registrados </li>
         @endforelse
