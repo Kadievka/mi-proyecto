@@ -42,13 +42,28 @@ class UserSeeder extends Seeder
         	'name'=>'Otro Usuario',
         	'email'=>'otrousuario@gmail.com',
         	'password'=>bcrypt('1111'),
+            'profession_id'=>2
 		]);
 
-		factory(User::class)->create([
+        
+		/*factory(User::class)->create([
 			'profession_id'=>2,
-		]);
+		]);*/
 
-		factory(User::class,47)->create();
+		//factory(User::class,47)->create();
 
+        for($i=0; $i<=47; $i++){
+            $randomNumber=rand(0,20);
+            if($randomNumber==0){
+                factory(User::class,20)->create([
+                    'profession_id'=>null,
+                ]);
+            }else{
+                factory(User::class)->create([
+                    'profession_id'=>$randomNumber,
+                ]);
+            }
+            
+        }
     }
 }
