@@ -53,15 +53,21 @@ class UserSeeder extends Seeder
 		//factory(User::class,47)->create();
 
         for($i=0; $i<=47; $i++){
+
             $randomNumber=rand(0,20);
+
             if($randomNumber==0){
+
                 factory(User::class,20)->create([
                     'profession_id'=>null,
                 ]);
+
             }else{
+
                 factory(User::class)->create([
                     'profession_id'=>$randomNumber,
                 ]);
+                
             }
             
         }
