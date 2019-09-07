@@ -1,22 +1,27 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.layout')
 
-        <title>Listado de Ususarios</title>
+@section('header')
+@endsection
 
-    </head>
-    <body>
-        <h1>{{$title}}</h1>
+@section('title')
+<title>{{$title}}</title>
+@endsection
+
+@section('content')
+
+    @section('contentTitle')
+        <h1 class="mt-5">Listado de Usuarios</h1>
         <hr>
+    @endsection
 
-        @forelse ($users as $user)
-            <li>{{$user->id}}. {{$user->name}} ({{$user->email}})
-            <a href="{{url('/usuarios/'.$user->id)}}">Ver Detalles</a></li>
-        @empty
-            <li>No hay usuarios registrados </li>
-        @endforelse
+    @forelse ($users as $user)
+        <li>{{$user->id}}. {{$user->name}} ({{$user->email}})
+        <a href="{{url('/usuarios/'.$user->id)}}">Ver Detalles</a></li>
+     @empty
+        <li>No hay usuarios registrados </li>
+    @endforelse
 
-    </body>
-</html>
+@endsection
+
+@section('footer')
+@endsection

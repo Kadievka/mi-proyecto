@@ -8,18 +8,20 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UsersModuleTest extends TestCase
 {
+
+
     /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    *@test
+    */
     function testExample()
     {
         $this->get('/usuarios')
         ->assertStatus(200)
         ->assertSee('Usuarios');
     }
-
+    /**
+    *@test
+    */
     function it_shows_the_users_list()
     {
         $this->get('/usuarios')
@@ -35,19 +37,19 @@ class UsersModuleTest extends TestCase
         ->assertSee('<script>$kad="123321"</script>');
 
     }
-
+    
+    /**
+    *@test
+    */
     function it_shows_no_users_registered()
     {
         $this->get('/usuarios?empty')
         ->assertSee('Listado de Usuarios')
         ->assertSee('No hay usuarios registrados');
     }
-
-        /**
-     * A basic feature test example.
-     *
-     * @test void
-     */
+    /**
+    *@test
+    */
     function it_shows_the_newusers()
     {
         $this->get('/usuarios/nuevo')
