@@ -24,6 +24,7 @@ class UsersModuleTest extends TestCase
     */
     function it_shows_the_users_list()
     {
+        
         $this->get('/usuarios')
         ->assertStatus(200)
         ->assertSee('Listado de Usuarios')

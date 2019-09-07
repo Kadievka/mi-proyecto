@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('header')
-@endsection
 
 @section('title')
 <title>{{$title}}</title>
@@ -24,4 +23,3 @@
 @endsection
 
 @section('footer')
-@endsection
