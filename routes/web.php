@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::get('/usuarios', 'UserController@index');
 
-Route::get('/usuarios/nuevo', 'NewUserController@index');
+Route::get('/usuarios/nuevo', 'UserController@create');
 
 /*Route::get('/usuarios/{id}', function ($id) {
     return '<h1>Mostarndo Detalle del Usuario: '.$id.'</h1>';

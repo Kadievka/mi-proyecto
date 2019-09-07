@@ -42,4 +42,17 @@ class UsersModuleTest extends TestCase
         ->assertSee('Listado de Usuarios')
         ->assertSee('No hay usuarios registrados');
     }
+
+        /**
+     * A basic feature test example.
+     *
+     * @test void
+     */
+    function it_shows_the_newusers()
+    {
+        $this->get('/usuarios/nuevo')
+        ->assertStatus(200)
+        ->assertSee('Crear Nuevo Usuario');
+
+    }
 }
