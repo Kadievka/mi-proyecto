@@ -1,17 +1,17 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.layout')
 
-        <title>Detalles</title>
+@section('header')
 
-        <!-- Válidators -->
+@section('title')
+    <title>Detalles del Usuario</title>
+@endsection
 
-    </head>
-    <body>
-        <h1>Detalles del Usuario {{$user->id}}</h1>
-        <hr>
+@section('content')
+
+    @section('contentTitle')
+        <h1 class="mt-5">Detalles del Usuario</h1>
+    @endsection
+
         <form>
             <p>
                 Nombre: <input type="text" name="name" value="{{$user->name}}" disabled="disabled" /> 
@@ -30,5 +30,7 @@
         
         <!-- NOTA: quiero realizar una verificación de datos en que si no hay nombre se muestre un mensaje de alerta cuando se pulsa el botón de aceptar -->
 
-    </body>
-</html>
+
+@endsection
+
+@section('footer')

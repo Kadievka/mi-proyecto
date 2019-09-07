@@ -10,7 +10,6 @@
 
     @section('contentTitle')
         <h1 class="mt-5">Listado de Usuarios</h1>
-        <hr>
     @endsection
 
     @forelse ($users as $user)
