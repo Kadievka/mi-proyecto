@@ -12,10 +12,14 @@
         <h1 class="mt-5">{{$title}}</h1>
     @endsection
 
-        <form>
+        <form method="POST" action="{{url('usuarios/crear')}}">
+
+            {!!csrf_field()!!}
+
             <p>
                 Nombre: <input type="text" name="name" value="" /> 
-                Apodo: <input type="text" name="nickname" value="" />
+                Email: <input type="email" name="email" value="" />
+                Contraseña: <input type="password" name="password" value="" />
             </p>
             <input type="submit" value="Aceptar" />
         </form>

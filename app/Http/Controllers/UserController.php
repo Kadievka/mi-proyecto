@@ -69,4 +69,18 @@ class UserController extends Controller
 
     }
 
+    public function store(){
+    	
+    	$data=request()->all();
+    	//dd($data);
+    	User::create([
+    		'name'=>$data['name'],
+    		'email'=>$data['email'],
+    		'password'=>$data['password'],
+    	]);
+
+    	return redirect(route('users'));
+
+    }
+
 }
