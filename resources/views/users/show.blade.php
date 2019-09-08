@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('header')
+@section('header')@endsection
 
 @section('title')
     <title>Detalles del Usuario</title>
@@ -33,4 +33,4 @@
 
 @endsection
 
-@section('footer')
+@section('footer')@endsection

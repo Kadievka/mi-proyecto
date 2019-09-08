@@ -14,17 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
     //return 'Home';
-});
+})->name('welcome');
 
-Route::get('/usuarios', 'UserController@index');
+Route::get('/usuarios', 'UserController@index')->name('users');
 
-Route::get('/usuarios/nuevo', 'UserController@create');
+Route::get('/usuarios/nuevo', 'UserController@create')->name('create');
 
 /*Route::get('/usuarios/{id}', function ($id) {
     return '<h1>Mostarndo Detalle del Usuario: '.$id.'</h1>';
 });*/
 
-Route::get('/usuarios/{id}', 'UserController@show');
+Route::get('/usuarios/{id}', 'UserController@show')->name('show');
 
 Route::get('/saludo/{name}/{nickname?}', function ($name,$nickname=null) {
 	if($nickname){
@@ -32,7 +32,7 @@ Route::get('/saludo/{name}/{nickname?}', function ($name,$nickname=null) {
 	}else{
 		return '<h1>Bienvenido '.$name.', no tienes apodo </h1>';
 	}
-});
+})->name('saludo');
 
 
 
