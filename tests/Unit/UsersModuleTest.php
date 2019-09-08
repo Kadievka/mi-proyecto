@@ -93,6 +93,8 @@ class UsersModuleTest extends TestCase
         ->assertStatus(200)
         ->assertSee('Kadievka Salcedo')
         ->assertSee('Detalles del Usuario #'.$user->id);
+
+        $response=DB::table('users')->truncate();
     }
 
     /**
@@ -125,8 +127,57 @@ class UsersModuleTest extends TestCase
             'email'=>'ren@example.com'
         ]);
 
+        $response=DB::table('users')->truncate();
+
     }
 
 
+    /**
+    *@test
+    */
+
+    function the_name_is_required(){
+        $this->from('/usuarios/nuevo')
+        ->post('/usuarios/crear',[
+            'name'=>'',
+            'email'=>'ren@example.com',
+            'password'=>bcrypt('123456')
+        ])->assertRedirect('/usuarios/nuevo')
+        ->assertSessionHasErrors(['name']);
+
+        $this->assertEquals(0,User::count());
+    }
+
+    /**
+    *@test
+    */
+
+    function the_email_is_required(){
+        $this->from('/usuarios/nuevo')
+        ->post('/usuarios/crear',[
+            'name'=>'Ren',
+            'email'=>'',
+            'password'=>bcrypt('123456')
+        ])->assertRedirect('/usuarios/nuevo')
+        ->assertSessionHasErrors(['email']);
+
+        $this->assertEquals(0,User::count());
+    }
+
+    /**
+    *@test
+    */
+
+    function the_password_is_required(){
+        $this->from('/usuarios/nuevo')
+        ->post('/usuarios/crear',[
+            'name'=>'Ren',
+            'email'=>'ren@example.com',
+            'password'=>'',
+        ])->assertRedirect('/usuarios/nuevo')
+        ->assertSessionHasErrors(['password']);
+
+        $this->assertEquals(0,User::count());
+    }
 
 }

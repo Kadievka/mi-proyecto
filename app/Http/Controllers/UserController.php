@@ -62,25 +62,29 @@ class UserController extends Controller
 
 	public function create(){
     	
-    	$title='Crear Nuevo Usuario';
-
-		return view ('users.create')
-		->with('title', $title);
+		return view ('users.create');
 
     }
 
     public function store(){
     	
-    	$data=request()->all();
-    	//dd($data);
-    	User::create([
-    		'name'=>$data['name'],
-    		'email'=>$data['email'],
-    		'password'=>$data['password'],
+    	$data=request()->validate([
+    		'name'=>'required',
+    		'email'=>'required|email',
+    		'password'=>'required'
+    	],[
+    		'name.required'=>'El campo Nombre es obligatorio'
     	]);
 
-    	return redirect(route('users'));
+	    //dd($data);
 
+	    User::create([
+	    	'name'=>$data['name'],
+	    	'email'=>$data['email'],
+	    	'password'=>$data['password'],
+	    ]);
+
+	    return redirect(route('users'));
     }
 
 }
