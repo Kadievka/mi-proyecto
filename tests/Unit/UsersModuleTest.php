@@ -120,6 +120,13 @@ class UsersModuleTest extends TestCase
             'password'=>bcrypt('123456')
         ])->assertRedirect('/usuarios');
 
+        $this->assertDatabaseHas('users',[
+            'name'=>'Ren',
+            'email'=>'ren@example.com'
+        ]);
+
     }
+
+
 
 }

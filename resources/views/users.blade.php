@@ -19,6 +19,8 @@
         <li>No hay usuarios registrados </li>
     @endforelse
 
+    <p><a href="{{url('/')}}">Regresar</a></p>
+
 @endsection
 
 @yield('footer')
