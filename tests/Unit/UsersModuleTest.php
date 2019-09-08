@@ -65,6 +65,7 @@ class UsersModuleTest extends TestCase
         $response=DB::table('users')->truncate();
 
         $this->get('/usuarios')
+        ->assertStatus(200)
         ->assertSee('Listado de Usuarios')
         ->assertSee('No hay usuarios registrados');
     }
@@ -75,8 +76,23 @@ class UsersModuleTest extends TestCase
     function it_shows_no_users_registered()
     {
         $this->get('/usuarios?empty')
+        ->assertStatus(200)
         ->assertSee('Listado de Usuarios')
         ->assertSee('No hay usuarios registrados');
     }
     
+    /**
+    *@test
+    */
+    function it_loads_the_user_details_page()
+    {
+        $user=factory (User::class)->create([
+            'name'=>'Kadievka Salcedo',
+        ]);
+        $this->get('/usuarios/'.$user->id)
+        ->assertStatus(200)
+        ->assertSee('Kadievka Salcedo')
+        ->assertSee('Detalles del Usuario #'.$user->id);
+    }
+
 }

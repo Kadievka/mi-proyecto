@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('header')@endsection
+@yield('header')
 
 @section('title')
     <title>Detalles del Usuario</title>
@@ -9,7 +9,7 @@
 @section('content')
 
     @section('contentTitle')
-        <h1 class="mt-5">Detalles del Usuario</h1>
+        <h1 class="mt-5">Detalles del Usuario #{{$user->id}}</h1>
     @endsection
 
         <form>
@@ -33,4 +33,4 @@
 
 @endsection
 
-@section('footer')@endsection
+@yield('footer')
