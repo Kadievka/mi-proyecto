@@ -114,7 +114,7 @@ class UsersModuleTest extends TestCase
 
     function it_creates_a_new_user(){
         
-        $this->withoutExceptionHandling();
+        //$this->withoutExceptionHandling();
 
         $this->post('/usuarios/crear',[
             'name'=>'Ren',
@@ -164,6 +164,31 @@ class UsersModuleTest extends TestCase
         $this->assertEquals(0,User::count());
     }
 
+
+    /**
+    *@test
+    */
+
+    function the_email_must_be_unique(){
+
+        $user=factory (User::class)->create([
+            'name'=>'Kadievka Salcedo',
+            'email'=>'kadievka.s@example.com'
+        ]);
+
+        $this->from('/usuarios/nuevo')
+        ->post('/usuarios/crear',[
+            'name'=>'Ren',
+            'email'=>'kadievka.s@example.com',
+            'password'=>'',
+        ])->assertRedirect('/usuarios/nuevo')
+        ->assertSessionHasErrors(['email']);
+
+        $this->assertEquals(1,User::count());
+
+        $response=DB::table('users')->truncate();
+    }
+
     /**
     *@test
     */
@@ -179,5 +204,40 @@ class UsersModuleTest extends TestCase
 
         $this->assertEquals(0,User::count());
     }
+
+    
+    /**
+    *@test
+    */
+
+    function the_password_must_have_at_least_6_characters(){
+        $this->from('/usuarios/nuevo')
+        ->post('/usuarios/crear',[
+            'name'=>'Ren',
+            'email'=>'ren@example.com',
+            'password'=>'s1.',
+        ])->assertRedirect('/usuarios/nuevo')
+        ->assertSessionHasErrors(['password']);
+
+        $this->assertEquals(0,User::count());
+    }
+
+    /**
+    *@test
+    */
+
+    /*function it_loads_the_edit_user_page(){
+        
+        $this->withoutExceptionHandling();
+
+        $user=factory (User::class)->create();
+
+        $this->get('/usuarios/{$user->id}/editar')
+        ->assertStatus(200)
+        ->assertSee('Editar los datos del usuario #'.$user->id);
+
+        //$response=DB::table('users')->truncate();
+
+    }*/
 
 }
