@@ -87,4 +87,11 @@ class UserController extends Controller
 	    return redirect(route('users'));
     }
 
+    public function edit($id){
+
+    	$user = User::findOrFail($id);
+    	return view ('users.edit',compact('user'));
+
+    }
+
 }

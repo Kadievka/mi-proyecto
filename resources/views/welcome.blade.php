@@ -88,6 +88,7 @@
                     <a href="http://mi-proyecto.test:8080/usuarios">Usuarios</a>
                     <a href="http://mi-proyecto.test:8080/usuarios?empty">No Hay Usuarios</a>
                     <a href="http://mi-proyecto.test:8080/usuarios/1">Un Usuario</a>
+                    <a href="http://mi-proyecto.test:8080/usuarios/1/editar">Editar Un Usuario</a>
                     <a href="http://mi-proyecto.test:8080/usuarios/nuevo">Nuevo Usuario</a>
                 </div>
             </div>

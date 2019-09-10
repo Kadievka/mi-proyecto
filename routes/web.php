@@ -29,7 +29,7 @@ Route::post('/usuarios/crear','UserController@store')->name('store');
 
 Route::get('/usuarios/{id}', 'UserController@show')->name('show');
 
-//Route::get('/usuarios/{id}/editar', 'UserController@edit')->name('edit');
+Route::get('/usuarios/{id}/editar', 'UserController@edit')->name('edit');
 
 //
 

@@ -89,6 +89,7 @@ class UsersModuleTest extends TestCase
         $user=factory (User::class)->create([
             'name'=>'Kadievka Salcedo',
         ]);
+
         $this->get('/usuarios/'.$user->id)
         ->assertStatus(200)
         ->assertSee('Kadievka Salcedo')
@@ -226,18 +227,18 @@ class UsersModuleTest extends TestCase
     *@test
     */
 
-    /*function it_loads_the_edit_user_page(){
+    function it_loads_the_edit_user_page(){
         
         $this->withoutExceptionHandling();
 
         $user=factory (User::class)->create();
 
-        $this->get('/usuarios/{$user->id}/editar')
+        $this->get('/usuarios/'.$user->id.'/editar')
         ->assertStatus(200)
         ->assertSee('Editar los datos del usuario #'.$user->id);
 
         //$response=DB::table('users')->truncate();
 
-    }*/
+    }
 
 }
