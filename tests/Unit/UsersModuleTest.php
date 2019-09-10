@@ -229,13 +229,48 @@ class UsersModuleTest extends TestCase
 
     function it_loads_the_edit_user_page(){
         
-        $this->withoutExceptionHandling();
+        //$this->withoutExceptionHandling();
 
         $user=factory (User::class)->create();
 
         $this->get('/usuarios/'.$user->id.'/editar')
         ->assertStatus(200)
         ->assertSee('Editar los datos del usuario #'.$user->id);
+
+        $this->assertEquals(1,User::count());
+
+        $response=DB::table('users')->truncate();
+
+    }
+
+    /**
+    *@test
+    */
+
+    function it_updates_an_user(){
+        
+        $this->withoutExceptionHandling();
+
+        $user=factory (User::class)->create([
+            'name'=>'Sara',
+            'email'=>'sara@example.com',
+            'password'=>'swefgrgrrwe',
+        ]);
+
+        //dd($user);
+
+        $this->put('/usuarios/'.$user->id.'/editar',[
+            'name'=>'Ren Honjo',
+            'email'=>'ren@example.com',
+            'password'=>'123456789',
+        ])->assertRedirect('/usuarios/'.$user->id);
+
+        $this->assertDatabaseHas('users',[
+            'name'=>'Ren Honjo',
+            'email'=>'ren@example.com'
+        ]);
+
+        $this->assertEquals(1,User::count());
 
         //$response=DB::table('users')->truncate();
 

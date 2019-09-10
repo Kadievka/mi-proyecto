@@ -23,14 +23,16 @@
             </div>
         @endif
 
-        <form method="POST" action="{{url('usuarios/crear')}}">
+        <form method="GET" action="{{url('usuarios/'.$user->id.'/editar')}}">
 
             {!!csrf_field()!!}
 
+            {{ method_field('PUT') }}
+
             <p>
-                Nombre: <input type="text" name="name" id="name" value="{{$user->name,old('name')}}" placeholder="Nombre Apellido" /> 
-                Email: <input type="email" name="email" id="email" value="{{$user->email,old('email')}}" placeholder="email@valido.com" />
-                Contraseña: <input type="password" name="password" id="password" value="{{old('password')}}" placeholder="mínimo 6 digitos" />
+                Nombre: <input type="text" name="name" id="name" value="{{$user->name}}" placeholder="Nombre Apellido" /> 
+                Email: <input type="email" name="email" id="email" value="{{$user->email}}" placeholder="email@valido.com" />
+                Contraseña: <input type="password" name="password" id="password" value="" placeholder="mínimo 6 digitos" />
             </p>
             <input type="submit" value="Aceptar" />
         </form>

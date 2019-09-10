@@ -94,4 +94,19 @@ class UserController extends Controller
 
     }
 
+    public function update($id){
+
+    	$user = User::findOrFail($id);
+
+    	$data=request()->all();
+    	$data['password']=bcrypt($data['password']);
+
+    	$user->update($data);
+
+    	//dd($user);
+
+    	return redirect ('usuarios/'.$user->id);
+
+    }
+
 }
