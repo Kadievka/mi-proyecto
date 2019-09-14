@@ -284,11 +284,83 @@ class UsersModuleTest extends TestCase
 
         $this->assertEquals(1,User::count());
 
+        $response=DB::table('users')->truncate();
+
+    }
+
+    /**
+    **@test
+    */
+
+    function the_name_is_required_when_updating_an_user(){
         
+        $user=factory (User::class)->create();
 
+        $this->from("/usuarios/{$user->id}/editar")
+            ->put("/usuarios/{$user->id}",[
+                'name'=>'',
+                'email'=>'ren@example.com',
+                'password'=>'123456789'
+            ])->assertRedirect("/usuarios/{$user->id}/editar")
+            ->assertSessionHasErrors(['name']);
 
-        //$response=DB::table('users')->truncate();
+            $this->assertDatabaseMissing('users',['email'=>'ren@example.com']);
+            $this->assertEquals(1,User::count());
 
+            $response=DB::table('users')->truncate();
+    }
+
+    /**
+    **@test
+    */
+
+    function the_password_is_optional_when_updating_an_user(){
+
+        $oldPassword='CLAVE ANTERIOR';
+        
+        $user=factory (User::class)->create([
+            'password'=>bcrypt($oldPassword),
+        ]);
+
+        $this->from("/usuarios/{$user->id}/editar")
+            ->put("/usuarios/{$user->id}",[
+                'name'=>'Ren',
+                'email'=>'ren@example.com',
+                'password'=>''
+            ])->assertRedirect("/usuarios/{$user->id}");
+
+            $this->assertEquals(1,User::count());
+
+            $response=DB::table('users')->truncate();
+    }
+
+    /**
+    **@test
+    */
+
+    function the_email_can_stay_the_same_when_updating_an_user(){
+        
+        $user=factory (User::class)->create([
+            'email'=>'ren@example.com',
+        ]);
+
+        //dd('nombre inicial:'.$user['name'].' '.$user['email']);
+
+        $this->from("/usuarios/{$user->id}/editar")
+            ->put("/usuarios/{$user->id}",[
+                'name'=>'Inuyasha',
+                'email'=>'ren@example.com',
+                'password'=>'123456789'
+            ])->assertRedirect("/usuarios/{$user->id}");
+
+            $this->assertEquals(1,User::count());
+
+            //dd('nombre final:'.$user['name'].' '.$user['email']);
+
+            //$this->assertDatabaseHas([
+                //'name'=>'Inuyasha',
+                //'email'=>'ren@example.com'
+            //]);
     }
 
 }

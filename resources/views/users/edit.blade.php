@@ -23,7 +23,7 @@
             </div>
         @endif
 
-        <form method="" action="{{url('usuarios/'.$user->id)}}">
+        <form method="GET" action="{{url('/usuarios/'.$user->id)}}">
 
             {!!csrf_field()!!}
 

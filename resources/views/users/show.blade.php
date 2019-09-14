@@ -29,7 +29,7 @@
         <p>Nombre del usuario: {{ $user->name }}</p>
         <p>Correo electrónico: {{ $user->email }}</p>
 
-       <p><a href="{{url()->previous()}}">Regresar</a></p>
+       <p><a href="{{url('/')}}">Regresar</a></p>
         
         <!-- NOTA: quiero realizar una verificación de datos en que si no hay nombre se muestre un mensaje de alerta cuando se pulsa el botón de aceptar -->
 
