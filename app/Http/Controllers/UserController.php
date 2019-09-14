@@ -13,23 +13,7 @@ class UserController extends Controller
 		if (request()->has('empty')){
 			$users=[];
 		}else{
-			
-			/*$users=[
-			'Do',
-			'Re',
-			'Mi',
-			'Fa',
-			'Sol',
-			'La',
-			'Si',
-			'<script>$kad="123321"</script>',
-			];*/
-
-			//$users=DB::table('users')->get();
-			//dd($users);
-
 			$users=User::all();
-
 		}
 
 		$title='Listado de Usuarios';
@@ -39,25 +23,9 @@ class UserController extends Controller
 		->with('title',$title);
 	}
 
-	public function show($id){
+	public function show(User $user){
 		
-		/*$user=User::find($id);
-
-		if($user==null){
-
-			return view('Errors.404');
-
-		}else{
-			
-			//dd($user);
-			return view('users.show',compact('user'));
-
-		}*/
-
-		$user = User::findOrFail($id);
-		return view('users.show',compact('user'));
-
-
+		return view('users.show', ['user' => $user]);
 	}
 
 	public function create(){
@@ -87,25 +55,24 @@ class UserController extends Controller
 	    return redirect(route('users'));
     }
 
-    public function edit($id){
+    public function edit(User $user){
 
-    	$user = User::findOrFail($id);
-    	return view ('users.edit',compact('user'));
+    	return view('users.edit', ['user' => $user]);
 
     }
 
-    public function update($id){
-
-    	$user = User::findOrFail($id);
+    public function update(User $user){
 
     	$data=request()->all();
+
     	$data['password']=bcrypt($data['password']);
 
     	$user->update($data);
 
-    	//dd($user);
+    	//dd($user);//Cambios realizados
 
-    	return redirect ('usuarios/'.$user->id);
+    	return redirect()->route('users.show', ['user' => $user]);//
+
 
     }
 

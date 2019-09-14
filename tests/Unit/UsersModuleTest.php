@@ -233,13 +233,25 @@ class UsersModuleTest extends TestCase
 
         $user=factory (User::class)->create();
 
-        $this->get('/usuarios/'.$user->id.'/editar')
+        /*$this->get('/usuarios/'.$user->id.'/editar')
         ->assertStatus(200)
         ->assertSee('Editar los datos del usuario #'.$user->id);
 
         $this->assertEquals(1,User::count());
 
-        $response=DB::table('users')->truncate();
+        $response=DB::table('users')->truncate();*/
+
+        $this->get("/usuarios/{$user->id}/editar")
+           ->assertStatus(200)
+            ->assertSee('Editar los datos del usuario #'.$user->id)
+            ->assertViewHas('user', function ($viewUser) use ($user) {
+                return $viewUser->id === $user->id; //esto se hace para evitar un error en cuanto a la vista y al controlador
+            })
+           ->assertViewIs('users.edit');
+
+            $this->assertEquals(1,User::count());
+
+            $response=DB::table('users')->truncate();
 
     }
 
@@ -249,21 +261,21 @@ class UsersModuleTest extends TestCase
 
     function it_updates_an_user(){
         
-        $this->withoutExceptionHandling();
-
         $user=factory (User::class)->create([
             'name'=>'Sara',
             'email'=>'sara@example.com',
             'password'=>'swefgrgrrwe',
         ]);
 
+        $this->withoutExceptionHandling();
+
         //dd($user);
 
-        $this->put('/usuarios/'.$user->id.'/editar',[
+        $this->put("/usuarios/{$user->id}",[
             'name'=>'Ren Honjo',
             'email'=>'ren@example.com',
             'password'=>'123456789',
-        ])->assertRedirect('/usuarios/'.$user->id);
+        ])->assertRedirect("/usuarios/{$user->id}");
 
         $this->assertDatabaseHas('users',[
             'name'=>'Ren Honjo',
@@ -271,6 +283,9 @@ class UsersModuleTest extends TestCase
         ]);
 
         $this->assertEquals(1,User::count());
+
+        
+
 
         //$response=DB::table('users')->truncate();
 

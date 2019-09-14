@@ -35,8 +35,8 @@
             <input type="submit" value="Aceptar" />
         </form>
         
-        <!-- NOTA: quiero realizar una verificación de datos en que si no hay nombre se muestre un mensaje de alerta cuando se pulsa el botón de aceptar -->
-   
+        <p><a href="{{url()->previous()}}">Regresar</a></p>
+
 @endsection
 
 @yield('footer')

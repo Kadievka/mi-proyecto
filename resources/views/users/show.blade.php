@@ -12,7 +12,7 @@
         <h1 class="mt-5">Detalles del Usuario #{{$user->id}}</h1>
     @endsection
 
-        <form>
+        <!--form>
             <p>
                 Nombre: <input type="text" name="name" value="{{$user->name}}" disabled="disabled" /> 
                 Email: <input type="text" name="email" value="{{$user->email}}" disabled="disabled"/>
@@ -24,9 +24,12 @@
                 @endif
 
             </p>
-        </form>
+        </form-->
 
-        <p><a href="{{url('/usuarios/')}}">Regresar</a></p>
+        <p>Nombre del usuario: {{ $user->name }}</p>
+        <p>Correo electrónico: {{ $user->email }}</p>
+
+       <p><a href="{{url()->previous()}}">Regresar</a></p>
         
         <!-- NOTA: quiero realizar una verificación de datos en que si no hay nombre se muestre un mensaje de alerta cuando se pulsa el botón de aceptar -->
 

@@ -18,20 +18,20 @@ Route::get('/', function () {
 
 Route::get('/usuarios', 'UserController@index')->name('users');
 
-Route::get('/usuarios/nuevo', 'UserController@create')->name('create');
+Route::get('/usuarios/nuevo', 'UserController@create')->name('users.create');
 
-Route::post('/usuarios/crear','UserController@store')->name('store');
+Route::post('/usuarios/crear','UserController@store')->name('users.store');
 
 
 /*Route::get('/usuarios/{id}', function ($id) {
     return '<h1>Mostrando Detalle del Usuario: '.$id.'</h1>';
 });*/
 
-Route::get('/usuarios/{id}', 'UserController@show')->name('show');
+Route::get('/usuarios/{user}', 'UserController@show')->name('users.show');
 
-Route::get('/usuarios/{id}/editar', 'UserController@edit')->name('edit');
+Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 
-Route::put('/usuarios/{id}/editar', 'UserController@update')->name('update');
+Route::put('/usuarios/{user}', 'UserController@update')->name('users.update');
 
 //
 

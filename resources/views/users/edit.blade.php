@@ -23,7 +23,7 @@
             </div>
         @endif
 
-        <form method="GET" action="{{url('usuarios/'.$user->id.'/editar')}}">
+        <form method="" action="{{url('usuarios/'.$user->id)}}">
 
             {!!csrf_field()!!}
 
@@ -36,8 +36,8 @@
             </p>
             <input type="submit" value="Aceptar" />
         </form>
-        
-        <!-- NOTA: quiero realizar una verificación de datos en que si no hay nombre se muestre un mensaje de alerta cuando se pulsa el botón de aceptar -->
+
+        <p><a href="{{url('')}}">Regresar</a></p>
    
 @endsection
 
