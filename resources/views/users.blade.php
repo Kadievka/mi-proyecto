@@ -14,7 +14,11 @@
 
     @forelse ($users as $user)
         <li>{{$user->id}}. {{$user->name}} ({{$user->email}})
-        <a href="{{url('/usuarios/'.$user->id)}}">Ver Detalles</a></li>
+        <!--a href="{{url('/usuarios/'.$user->id)}}">Ver Detalles</a></li-->
+        <a href="{{route('users.show',$user)}}">Ver Detalles</a>||
+        <a href="{{route('users.edit',$user)}}">Editar</a>||</li>
+
+
      @empty
         <li>No hay usuarios registrados </li>
     @endforelse

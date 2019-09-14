@@ -361,6 +361,9 @@ class UsersModuleTest extends TestCase
                 //'name'=>'Inuyasha',
                 //'email'=>'ren@example.com'
             //]);
+            $response=DB::table('users')->truncate();
     }
+
+
 
 }
