@@ -73,6 +73,7 @@ class UserController extends Controller
 
     	if ($data['password']!=null){
     		$data['password']=bcrypt($data['password']);
+    		$data=request()->validate(['password'=>'min:6']);
     	}else{
     		unset($data['password']);
     	}

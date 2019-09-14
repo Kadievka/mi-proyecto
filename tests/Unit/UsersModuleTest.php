@@ -357,10 +357,10 @@ class UsersModuleTest extends TestCase
 
             //dd('nombre final:'.$user['name'].' '.$user['email']);
 
-            //$this->assertDatabaseHas([
-                //'name'=>'Inuyasha',
-                //'email'=>'ren@example.com'
-            //]);
+            $this->assertDatabaseHas('users',[
+                'name'=>'Inuyasha',
+                'email'=>'ren@example.com'
+            ]);
             $response=DB::table('users')->truncate();
     }
 

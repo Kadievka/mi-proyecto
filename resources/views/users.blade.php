@@ -23,7 +23,7 @@
         <li>No hay usuarios registrados </li>
     @endforelse
 
-    <p><a href="{{url()->previous()}}">Regresar</a></p>
+    <p><a href="{{url('/')}}">Regresar</a></p>
 
 @endsection
 
