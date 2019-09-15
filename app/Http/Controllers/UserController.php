@@ -49,7 +49,7 @@ class UserController extends Controller
 	    User::create([
 	    	'name'=>$data['name'],
 	    	'email'=>$data['email'],
-	    	'password'=>$data['password'],
+	    	'password'=>bcrypt($data['password']),
 	    ]);
 
 	    return redirect(route('users'));
