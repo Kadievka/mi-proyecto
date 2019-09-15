@@ -73,7 +73,6 @@ class UserController extends Controller
 
     	if ($data['password']!=null){
     		$data['password']=bcrypt($data['password']);
-    		$data=request()->validate(['password'=>'min:6']);
     	}else{
     		unset($data['password']);
     	}
@@ -85,6 +84,12 @@ class UserController extends Controller
     	return redirect()->route('users.show', ['user' => $user]);//
     }
 
+   function destroy(User $user){
 
+   	$user->delete();
+
+   	return redirect()->route('users');
+
+   }
 
 }

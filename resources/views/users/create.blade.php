@@ -27,6 +27,8 @@
 
             {!!csrf_field()!!}
 
+            {{ method_field('POST') }}
+
             <p>
                 Nombre: <input type="text" name="name" id="name" value="{{old('name')}}" placeholder="Nombre Apellido" /> 
                 Email: <input type="email" name="email" id="email" value="{{old('email')}}" placeholder="email@valido.com" />

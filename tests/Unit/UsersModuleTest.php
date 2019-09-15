@@ -267,7 +267,7 @@ class UsersModuleTest extends TestCase
             'password'=>'swefgrgrrwe',
         ]);
 
-        $this->withoutExceptionHandling();
+        //$this->withoutExceptionHandling();
 
         //dd($user);
 
@@ -364,6 +364,19 @@ class UsersModuleTest extends TestCase
             $response=DB::table('users')->truncate();
     }
 
+    /**
+    **@test
+    */
+    function it_deletes_an_user(){
 
+        $this->withoutExceptionHandling();
+
+        $user = factory (User::class)->create();
+
+        $this->delete("/usuarios/{$user->id}")
+        ->assertRedirect('/usuarios');
+        
+        $this->assertDatabaseMissing('users',['id'=>$user->id]);
+    }
 
 }
