@@ -12,44 +12,50 @@
         <h1 class="mt-5">Listado de Usuarios</h1>
     @endsection
 
-    <table class="table">
-	  <thead class="thead-dark">
-	    <tr>
-	      <th scope="col">#</th>
-	      <th scope="col">Nombre</th>
-	      <th scope="col">Correo</th>
-	      <th scope="col">Acciones</th>
-	    </tr>
-	  </thead>
-	  <tbody>
+    <div class="row">
+	    <div class="col-md-10">
+		    <table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col" width="25%">Nombre</th>
+			      <th scope="col">Correo</th>
+			      <th scope="col">Acciones</th>
+			    </tr>
+			  </thead>
+			  <tbody>
 
-	  	@forelse ($users as $user)
-		    <tr>
-		      <th scope="row">{{$user->id}}</th>
-		      <td>{{$user->name}}</td>
-		      <td>{{$user->email}}</td>
-		      <td>
-		      	<a href="{{route('users.show',$user)}}">Ver Detalles</a>||
-        		<a href="{{route('users.edit',$user)}}">Editar</a>||</li>
+			  	@forelse ($users as $user)
+				    <tr>
+				      <th scope="row">{{$user->id}}</th>
+				      <td>{{$user->name}}</td>
+				      <td>{{$user->email}}</td>
+				      <td>
+				      	<form method="POST" action="{{route('users.destroy',$user)}}">
 
-	        		<form method="POST" action="{{route('users.destroy',$user)}}">
-	        	
-	        			{!!csrf_field()!!}
+				      		<a href="{{route('users.show',$user)}}" class="btn btn-link"><span class="oi oi-eye"></a>||
+		        			<a href="{{route('users.edit',$user)}}" class="btn btn-link"><span class="oi oi-pencil"></a>||</li>
 
-	            		{{ method_field('DELETE') }}
+			        		
+			        	
+			        			{!!csrf_field()!!}
 
-	            		<input type="submit" value="Eliminar" />
+			            		{{ method_field('DELETE') }}
 
-	        		</form>
-        	  </td>
-		    </tr>
+			            		<button type="submit" value="Eliminar" class="btn btn-link"><span class="oi oi-trash"></span></button>
 
-	    @empty
-        	<p>No hay usuarios registrados</p>
-    	@endforelse
+			        		</form>
+		        	  </td>
+				    </tr>
 
-	  </tbody>
-	</table>
+			    @empty
+		        	<p>No hay usuarios registrados</p>
+		    	@endforelse
+
+			  </tbody>
+			</table>
+		</div>
+	</div>
 
     <p><a href="{{url('/')}}">Regresar</a></p>
 
