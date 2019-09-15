@@ -30,6 +30,7 @@ class ProfessionSeeder extends Seeder
 
         //ELOQUENT
 
+        /*********************************
         Profession::create([
             'title'=>'Desarrollador back-end'
         ]);
@@ -42,6 +43,36 @@ class ProfessionSeeder extends Seeder
         //dd('professionId: '.$professionId);
 
         factory(Profession::class,18)->create();
+        **************************************/
+
+        $professionsArray=[
+            'Desarrollador back-end',
+            'Desarrollador front-end',
+            'Desarrollador web',
+            'Médico',
+            'Auxiliar Médico',
+            'Docente',
+            'Maestro',
+            'Ingeniero de Sistemas',
+            'Ingeniero Mecánico',
+            'Ingeniero Industrial',
+            'Administrador de Empresas',
+            'Contador',
+            'Traductor',
+            'Ingeniero Mecatrónico',
+            'Abogado',
+            'Secretaria',
+            'Enfermera',
+            'Policía',
+            'Inspector',
+            'Ingeniero Químico',  
+        ];
+
+        foreach($professionsArray as $professionElement){
+            Profession::create([
+                'title'=>$professionElement,
+            ]);
+        }
 
     }
 }
