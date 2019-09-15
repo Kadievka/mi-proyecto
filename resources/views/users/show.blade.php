@@ -25,7 +25,13 @@
         </div>
         <div class="form-group">
             <label for="profession">Profesión</label>
-            <input type="text" name="profession" id="profession" value="{{$user->profession['title']}}" class="form-control" disabled="disabled"/>
+
+            @if($user->profession['title']==null)
+                <input type="text" name="profession" id="profession" value="Sin Profesión" class="form-control" disabled="disabled"/>
+            @else
+                <input type="text" name="profession" id="profession" value="{{$user->profession['title']}}" class="form-control" disabled="disabled"/>
+            @endif
+
         </div>
           
         <a class="btn btn-primary" href="{{url('/usuarios/')}}">Regresar</a>
