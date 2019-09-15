@@ -12,27 +12,25 @@
         <h1 class="mt-5">Detalles del Usuario #{{$user->id}}</h1>
     @endsection
 
-        <!--form>
-            <p>
-                Nombre: <input type="text" name="name" value="{{$user->name}}" disabled="disabled" /> 
-                Email: <input type="text" name="email" value="{{$user->email}}" disabled="disabled"/>
+    <form>
 
-                @if(!$user->profession)
-                    Profesión: <input type="text" name="profession" value="Sin Profesión" disabled="disabled"/>
-                @else
-                    Profesión: <input type="text" name="profession" value="{{$user->profession['title']}}" disabled="disabled"/>
-                @endif
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" value="{{$user->name}}"  class="form-control" disabled="disabled"/>
+        </div> 
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="{{$user->email}}" class="form-control" disabled="disabled"/>
+            <small id="emailHelp" class="form-text text-muted">Tu email es completamente privado.</small>
+        </div>
+        <div class="form-group">
+            <label for="profession">Profesión</label>
+            <input type="text" name="profession" id="profession" value="{{$user->profession['title']}}" class="form-control" disabled="disabled"/>
+        </div>
+          
+        <a class="btn btn-primary" href="{{url('/usuarios/')}}">Regresar</a>
 
-            </p>
-        </form-->
-
-        <p>Nombre del usuario: {{ $user->name }}</p>
-        <p>Correo electrónico: {{ $user->email }}</p>
-
-       <p><a href="{{url('/usuarios/')}}">Regresar</a></p>
-        
-        <!-- NOTA: quiero realizar una verificación de datos en que si no hay nombre se muestre un mensaje de alerta cuando se pulsa el botón de aceptar -->
-
+    </form>
 
 @endsection
 

@@ -57,7 +57,7 @@
 		</div>
 	</div>
 
-    <p><a href="{{url('/')}}">Regresar</a></p>
+    <a class="btn btn-primary" href="{{url('/')}}">Regresar</a>
 
 @endsection
 
