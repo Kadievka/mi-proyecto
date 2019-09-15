@@ -84,7 +84,9 @@ class UserController extends Controller
     	return redirect()->route('users.show', ['user' => $user]);//
     }
 
-   function destroy(User $user){
+   public function destroy(User $user){
+
+   	//NOTA: QUIERO AGREGAR UN MENSAJE DE ADVERTENCIA ANTES DE HACER EL DELETE
 
    	$user->delete();
 
