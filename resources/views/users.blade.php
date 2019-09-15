@@ -33,8 +33,8 @@
 				      <td>
 				      	<form method="POST" action="{{route('users.destroy',$user)}}">
 
-				      		<a href="{{route('users.show',$user)}}" class="btn btn-link"><span class="oi oi-eye"></a>||
-		        			<a href="{{route('users.edit',$user)}}" class="btn btn-link"><span class="oi oi-pencil"></a>||</li>
+				      		<a href="{{route('users.show',$user)}}" class="btn btn-link"><i class="fa fa-eye fa-1x"></i></a>||
+		        			<a href="{{route('users.edit',$user)}}" class="btn btn-link"><i class="fa fa-pencil fa-1x"></i></a>||</li>
 
 			        		
 			        	
@@ -42,7 +42,7 @@
 
 			            		{{ method_field('DELETE') }}
 
-			            		<button type="submit" value="Eliminar" class="btn btn-link"><span class="oi oi-trash"></span></button>
+			            		<button type="submit" value="Eliminar" class="btn btn-link"><i class="fa fa-trash fa-1x"></i></button>
 
 			        		</form>
 		        	  </td>

@@ -19,7 +19,11 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 	    <style>
+
 	      .bd-placeholder-img {
 	        font-size: 1.125rem;
 	        text-anchor: middle;
@@ -43,6 +47,7 @@
 	    <header>
 		  <!-- Fixed navbar -->
 		  <nav class="navbar navbar-dark fixed-top bg-dark height: 50px" >
+
 		  </nav>
 		</header>
 
@@ -56,6 +61,9 @@
 		    	@yield('contentTitle')
 
 		    	<hr>
+					<!--i class="fa fa-car"></i>
+					<i class="fa fa-car" style="font-size:48px;"></i>
+					<i class="fa fa-car" style="font-size:60px;color:red;"></i-->
 
 				@yield('content')
 
